@@ -1,0 +1,33 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  encoding: utf-8
+  #host: 192.168.10.54
+  host: localhost
+  #user: postgres
+  #username: postgres
+  user: admin
+  username: admin
+  password: 88888888
+  port: 5432
+
+development:
+  <<: *default
+  database: chatroom_rails_development
+
+test:
+  <<: *default
+  database: chatroom_rails_test
+
+#   production:
+#     url: <%= ENV["MY_APP_DATABASE_URL"] %>
+#
+production:
+  <<: *default
+  database: chatroom_rails_production
+  username: chatroom_rails
+  password: <%= ENV["CHATROOM_RAILS_DATABASE_PASSWORD"] %>
