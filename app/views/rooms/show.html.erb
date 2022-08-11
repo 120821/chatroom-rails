@@ -34,9 +34,13 @@
       <% end %>
     </div>
 
-    <%= simple_form_for @room_message, remote: true do |form| %>
+    <input type="text" id='message' name="message" placeholder='输入一些东东'/>
+    <input type="button" id='send' value='Send'/>
+
+    <!--
+    <%= form_for @room_message do |form| %>
       <div class="input-group mb-3">
-        <%= form.input :message, as: :string,
+        <%= form.text_field :message, as: :string,
                                  wrapper: false,
                                  label: false,
                                  input_html: {
@@ -47,8 +51,9 @@
         </div>
       </div>
 
-      <%= form.input :room_id, as: :hidden %>
+      <%= form.text_field :room_id, as: :hidden %>
     <% end %>
+    -->
   </div>
 </div>
 
@@ -72,3 +77,14 @@
   </div>
 </div>
 
+<script>
+  jQuery('#send').click(function(e){
+    $.ajax({ url: '/room_messages',
+      type: 'POST',
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      data: 'room_message[room_id]=' + <%= params[:id] %> + '&room_message[message]=' + jQuery('#message').val(),
+      success: function(response) {
+      }
+    });
+  })
+</script>
