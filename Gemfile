@@ -1,8 +1,10 @@
-source "https://rubygems.org"
+#source "https://rubygems.org"
+ source 'https://gems.ruby-china.com'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.0"
 
+gem 'redis'
 gem 'simple_form'
 
 gem 'bootstrap', '~> 4.3.1'
