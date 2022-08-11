@@ -83,8 +83,8 @@
       type: 'POST',
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       data: 'room_message[room_id]=' + <%= params[:id] %> + '&room_message[message]=' + jQuery('#message').val(),
-      success: function(response) {
-      }
+      success: jQuery('#message').val('')
+        //function(response) { }
     });
   })
 </script>
