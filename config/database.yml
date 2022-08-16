@@ -28,6 +28,4 @@ test:
 #
 production:
   <<: *default
-  database: chatroom_rails_production
-  username: chatroom_rails
-  password: <%= ENV["CHATROOM_RAILS_DATABASE_PASSWORD"] %>
+  database: chatroom_rails_development
